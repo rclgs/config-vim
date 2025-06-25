@@ -30,9 +30,9 @@ set history=1000                 " Increase the history size
 set autoread                     " Automatically reload files edited outside of Vim
 autocmd FocusGained * checktime  " Check for external changes when returning to Vim
 set backup                       " Enable backup files
-set backupdir=~/.config/vim/bak/ " Set backup directory
+set backupdir=~/.vim/backup/     " Set backup directory
 set undofile                     " Enable persistent undo
-set undodir=~/.config/vim/undo/  " Set undo directory
+set undodir=~/.vim/undo/         " Set undo directory
 
 " Miscellaneous
 set clipboard=unnamedplus        " Use system clipboard
