@@ -29,11 +29,24 @@ set history=1000                 " Increase the history size
 " File Handling
 set autoread                     " Automatically reload files edited outside of Vim
 autocmd FocusGained * checktime  " Check for external changes when returning to Vim
+set backup                       " Enable backup files
+set backupdir=~/.config/vim/bak/ " Set backup directory
+set undofile                     " Enable persistent undo
+set undodir=~/.config/vim/undo/  " Set undo directory
 
 " Miscellaneous
 set clipboard=unnamedplus        " Use system clipboard
 set timeoutlen=500               " Time to wait for a mapped sequence to complete
 set wildmenu                     " Enable command-line completion
+set termguicolors                " Enable true colors
+set colorcolumn=80,100,120       " Enable color column in cols 80, 100 and 120
+
+" Plugins
+" curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call plug#begin('~/.config/vim/plugged')
+Plug 'junegunn/seoul256.vim'
+call plug#end()
 
 " Colorscheme
-silent! colorscheme unokai
+let g:seoul256_background = 234
+silent! colorscheme seoul256
