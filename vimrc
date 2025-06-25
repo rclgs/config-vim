@@ -30,9 +30,9 @@ set history=1000                 " Increase the history size
 set autoread                     " Automatically reload files edited outside of Vim
 autocmd FocusGained * checktime  " Check for external changes when returning to Vim
 set backup                       " Enable backup files
-set backupdir=~/.config/vim/bak/ " Set backup directory
+set backupdir=~/.vim/backup/     " Set backup directory
 set undofile                     " Enable persistent undo
-set undodir=~/.config/vim/undo/  " Set undo directory
+set undodir=~/.vim/undo/         " Set undo directory
 
 " Miscellaneous
 set clipboard=unnamedplus        " Use system clipboard
@@ -42,7 +42,18 @@ set termguicolors                " Enable true colors
 set colorcolumn=80,100,120       " Enable color column in cols 80, 100 and 120
 
 " Plugins
-" curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent! curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+" Plugin list
 call plug#begin('~/.config/vim/plugged')
 Plug 'junegunn/seoul256.vim'
 call plug#end()
