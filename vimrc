@@ -33,6 +33,7 @@ set backup                       " Enable backup files
 set backupdir=~/.vim/backup/     " Set backup directory
 set undofile                     " Enable persistent undo
 set undodir=~/.vim/undo/         " Set undo directory
+set directory=~/.vim/swap//      " Set swap file directory
 
 " Miscellaneous
 set clipboard=unnamedplus        " Use system clipboard
