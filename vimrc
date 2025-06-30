@@ -52,6 +52,8 @@ endif
 
 " Plugin list
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -60,3 +62,7 @@ call plug#end()
 " Colorscheme
 let g:seoul256_background = 234
 silent! colorscheme seoul256
+
+" Keybindings
+"" FZF
+nnoremap <C-p> :Files<Cr>
